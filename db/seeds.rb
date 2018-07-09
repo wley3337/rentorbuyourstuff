@@ -6,13 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 
 #   Character.create(name: 'Luke', movie: movies.first)
-User.destroy_all
-Listing.destroy_all
-Exchange.destroy_all
 
-u1 = User.create(name: "Essa")
-u2 = User.create(name: "Anthony")
-u3 = User.create(name: "Will")
+u1 = User.create(name: "Essa", username: "e1", password: "essa123")
+u2 = User.create(name: "Anthony", username: "a1", password: "anthony123")
+u3 = User.create(name: "Will", username: "w1", password: "will123")
 
 l1 = Listing.create(product_name: "Bike", product_description: "bicycle", item_value: 1000.00, rental_price: 30.00, buy_price: 800.00, quality: "Mint Condition", address: "123 Street Rd.", zip_code: 20009)
 
@@ -25,12 +22,8 @@ u1.listings << l2
 u1.listings << l3
 u2.listings << l1
 
-# e1 = Exchange.create( listing_id: 2, start_date: "2018-10-24", end_date: "2018-10-31")
-#
-# e2 = Exchange.create(listing_id: 1, start_date: "2018-11-24", end_date: "2018-12-10")
-#
-# e3 = Exchange.create( listing_id: 3, start_date: "2018-12-12", end_date: "2018-12-21")
-#
-# u3.exchanges << e1
-# u3.exchanges << e2
-# u2.exchanges << e3
+e1 = Exchange.create(renter_id: 3, listing_id: 2, start_date: "2018-10-24", end_date: "2018-10-31")
+
+e2 = Exchange.create(renter_id: 3, listing_id: 1, start_date: "2018-11-24", end_date: "2018-12-10")
+
+e3 = Exchange.create(renter_id: 2, listing_id: 3, start_date: "2018-12-12", end_date: "2018-12-21")

@@ -1,0 +1,22 @@
+<h1><%= @listing.product_name%></h1>
+<h3>Owner: <%=link_to @listing.owner.name, user_path(@listing.owner)%></h3>
+
+<h3>Prices:</h3>
+<p> Rental Price:  <%= number_to_currency(@listing.rental_price)%> , Buy Price:  <%= number_to_currency(@listing.buy_price) %> </p>
+<div class="product_description">
+  <h3>Item Description:</h3>
+  <p>Condition: <%= @listing.quality%></p>
+  <%= @listing.product_description%>
+</div>
+
+<h3>Location:</h3>
+<p>Address: <%= @listing.address%> <%=@listing.zip_code%></p>
+
+<% if @listing.exchanges.any? %>
+  <h3>Not Available:</h3>
+  <ul>
+    <% @listing.exchanges.each do |exchange|%>
+      <li><%=exchange.start_date%>-<%=exchange.end_date%></li>
+    <%end%>
+  </ul>
+<%end%>
