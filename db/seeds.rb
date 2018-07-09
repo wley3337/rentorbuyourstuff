@@ -25,8 +25,12 @@ u1.listings << l2
 u1.listings << l3
 u2.listings << l1
 
-e1 = Exchange.create(renter_id: 3, listing_id: 2, start_date: "2018-10-24", end_date: "2018-10-31")
-
-e2 = Exchange.create(renter_id: 3, listing_id: 1, start_date: "2018-11-24", end_date: "2018-12-10")
-
-e3 = Exchange.create(renter_id: 1, listing_id: 1, start_date: "2018-12-12", end_date: "2018-12-21")
+# e1 = Exchange.create( listing_id: 2, start_date: "2018-10-24", end_date: "2018-10-31")
+#
+# e2 = Exchange.create(listing_id: 1, start_date: "2018-11-24", end_date: "2018-12-10")
+#
+# e3 = Exchange.create( listing_id: 3, start_date: "2018-12-12", end_date: "2018-12-21")
+#
+# u3.exchanges << e1
+# u3.exchanges << e2
+# u2.exchanges << e3
