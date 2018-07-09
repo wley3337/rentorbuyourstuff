@@ -1,5 +1,7 @@
 # README
 
+
+* heroku reference: https://medium.com/@kasiarosenb/deploying-your-rails-app-on-heroku-a2096dc40aac
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
