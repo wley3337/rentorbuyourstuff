@@ -1,2 +1,23 @@
-<h2>listing form page</h2>
-<!-- creat listing form -->
+
+<%= render partial: "/shared/error_partial", locals: {object: listing}%>
+
+<%= form_for listing do |f|%>
+<%= f.label :product_name %>
+<%= f.text_field :product_name%><br>
+<%= f.label :product_description %>
+<%= f.text_field :product_description%><br>
+<%= f.label :item_value %>
+<%= f.number_field :item_value%><br>
+<%= f.label :rental_price %>
+<%= f.number_field :rental_price%><br>
+<%= f.label :buy_price %>
+<%= f.number_field :buy_price%><br>
+<%= f.label :quality %>
+<%= f.text_field :quality%><br>
+<%= f.label :address %>
+<%= f.text_field :address%><br>
+<%= f.label :zip_code %>
+<%= f.number_field :zip_code%><br>
+<%= f.hidden_field :owner_id, :value => current_user.id %>
+<%= f.submit "Create Listing"%>
+<%end%>

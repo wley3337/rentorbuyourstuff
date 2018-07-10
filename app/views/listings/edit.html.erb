@@ -1,5 +1,3 @@
 <h1>Edit Listing</h1>
-
-<%= render 'listing_form' %>
-
-<!-- note changes in rental price apply to new exchanges only not existing. -->
+<h3>Note: changing the rental price applies only newly created exchanges </h3>
+<%= render partial: 'listing_form', locals: { listing: @listing } %>
