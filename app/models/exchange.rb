@@ -6,7 +6,7 @@ class Exchange < ApplicationRecord
     self.start_date.strftime("%a, %B %e, %Y")
   end
 
-  def start_date_format
+  def end_date_format
     self.end_date.strftime("%a, %B %e, %Y")
   end
 
