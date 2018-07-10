@@ -1,4 +1,38 @@
-<h1>User Show page</h1>
+<h1><%= @user.username %></h1>
+
+<h3>Name: <%= @user.name %></h3>
+
+<h3>Listings</h3>
+
+<% if @user.listings.empty? %>
+    <h4>You current have 0 listings.</h4>
+<% else %>
+    <ul>
+        <% @user.listings.each do |listing| %>
+            <li><%=render partial: "/listings/listing_summary", locals: { listing: listing } %></li>
+        <% end %>
+    </ul>
+<% end %>
+
+<h3>Rentals</h3>
+
+<% if @user.exchanges.empty? %>
+    <h4>You are not currently renting any items</h4>
+<% else %>
+    <ul>
+        <% @user.exchanges.each do |exchange| %>
+            <li><%= link_to exchange.listing.product_name, exchange_path(exchange) %></li>
+        <% end %>
+    </ul>
+<% end %>
+    
+
+        
+
+
+
+
+
 <!-- display self data
 links: see its listings  and rentals conditional logic for display text if nothing
 
