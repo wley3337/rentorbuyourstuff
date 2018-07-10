@@ -21,7 +21,7 @@
 <% else %>
     <ul>
         <% @user.exchanges.each do |exchange| %>
-            <li><%= link_to exchange.listing.product_name, exchange_path(exchange) %></li>
+            <li><%=render partial: "exchanges/exchange_summary", locals: { exchange: exchange } %></li>
         <% end %>
     </ul>
 <% end %>
