@@ -25,8 +25,19 @@
         <% end %>
     </ul>
 <% end %>
-    
 
+<br>
+<br>
+<%= link_to "All Listings", listings_path %>
+
+<%= form_tag edit_user_path(@user), method: 'get' do %>
+    <%= submit_tag 'Edit User' %>
+<% end %>
+
+
+<%= form_tag new_listing_path, method: 'get' do %>
+    <%= submit_tag 'Create A New Listing' %>
+<% end %>
         
 
 
