@@ -1,1 +1,1 @@
-<p><%= listing.name %>: Rent per day: <%=listing.rental_price%> Buy Price: <%=listing.buy_price%></p>
+<p><%= link_to "#{listing.product_name} : Rent per day: #{number_to_currency(listing.rental_price)} Buy Price: #{number_to_currency(listing.buy_price)}", listing_path(listing)%></p>

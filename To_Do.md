@@ -2,7 +2,7 @@
 SB
 * Date/time formatting
 done: User log_in
-* User log_out
+done: User log_out
 * Owner sees info on their listings
 * Buy option lockout rental option
 * Destroy listing:
@@ -10,8 +10,9 @@ done: User log_in
       -remove owner
       -maintains ratings of user
 * Renter has a list of rentals
+* add migration for locking in price for exchange so owner can't jack it up cost of exchange
 
-
+* analytics fixed for Skateboard with expansion later
 
 
 MS

@@ -1,7 +1,7 @@
 <h1>All Listings</h1>
 
-<% @listings.each do |x| %>
+<% @listings.each do |listing| %>
 
-<%= link_to x.product_name, x %><br>
+  <%=render partial: "listing_summary", locals: { listing: listing } %>
 
 <%end%>

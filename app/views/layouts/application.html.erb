@@ -11,10 +11,13 @@
 
   <body>
     <% if current_user %>
-      <%=link_to "Log Out", logout_path, method: "delete" %>
+        <%=link_to "Log Out", logout_path, method: "delete" %>
       <%else%>
-      <%= render "/sessions/new" %>
-      <%end%>
+        <%= render "/sessions/new" %>
+        <%= form_tag new_user_path, method: 'get' do %>
+          <%= submit_tag "Create New User"%>
+        <%end%>
+    <%end%>
     <%= yield %>
   </body>
 </html>

@@ -1,0 +1,7 @@
+<h1>User Edit</h1>
+
+  <%= render partial:"/shared/error_partial", locals: {object: @user} %>
+
+<%=render partial: "user_form", locals: {user: @user} %>
+
+<!-- restrict username field  -->
