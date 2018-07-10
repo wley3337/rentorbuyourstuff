@@ -1,7 +1,7 @@
 
 SB
 * Date/time formatting
-* User log_in
+done: User log_in
 * User log_out
 * Owner sees info on their listings
 * Buy option lockout rental option
