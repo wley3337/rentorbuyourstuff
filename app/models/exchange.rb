@@ -1,6 +1,20 @@
 class Exchange < ApplicationRecord
   belongs_to :renter, class_name: "User"
   belongs_to :listing
+  validates_presence_of :listing_id, :renter_id, :start_date, :total_price
+  validates :end_date, presence: true
+  validate :end_after_start
+
+#---Validations
+  def end_after_start
+    if end_date < start_date
+      errors.add(:end_date, "End date must be after start date")
+    end
+  end
+
+
+#----
+
 
   def start_date_format
     self.start_date.strftime("%a, %B %e, %Y")

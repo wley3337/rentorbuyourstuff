@@ -37,4 +37,20 @@ class ExchangesController < ApplicationController
     end
   end
 
+  def create
+    @exchange = Exchange.new(exchange_params)
+    @exchange.total_price = @exchange.get_rental_cost
+      if @exchange.save
+        redirect_to user_path(@exchange.renter_id)
+      else
+        render :new
+      end
+  end
+
+  private
+
+  def exchange_params
+    params.require(:exchange).permit(:listing_id, :renter_id, :start_date, :end_date, :total_price)
+  end
+
 end

@@ -1,10 +1,14 @@
-<h1>New Exhcange</h1>
+<h1><%=@listing.product_name%></h1>
+<h3><%=@listing.address%>, <%=@listing.zip_code%></h3>
 <!-- ability to create a new exchange should link from listing show page get listings info from params
 display rental time period and total cost. confirm active action futur feature make forms partial for rent and for buy  -->
 
-
+<%= render partial: "/shared/error_partial", locals: {object: @exchange} %>
 
 <%= form_for @exchange do |f| %>
+<%= f.hidden_field :listing_id, value: @listing.id%>
+<%= f.hidden_field :renter_id, value: current_user.id%>
+
 
   <%= f.label :start_date %>
   <%= f.date_field :start_date %>
@@ -12,5 +16,5 @@ display rental time period and total cost. confirm active action futur feature m
   <%= f.label :end_date %>
   <%= f.date_field :end_date %>
 
-  <%= f.submit %>
+  <%= f.submit  %>
 <% end %>
