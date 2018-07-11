@@ -9,7 +9,12 @@ class ListingsController < ApplicationController
   end
 
   def new
+    if current_user
     @listing = Listing.new
+    else
+      flash[:notice] = "You must be logged in to create a listing"
+      redirect_to root_path
+    end
   end
 
   def create
@@ -22,13 +27,19 @@ class ListingsController < ApplicationController
   end
 
   def edit
+    if current_user != nil
+      redirect_to listing_path(@listing)  unless @listing.owner_id == current_user.id
+    else
+      flash[:notice] = "You must be logged in to edit a listing"
+      redirect_to root_path
+    end
   end
 
   def update
     if @listing.update(list_params)
       redirect_to listing_path(@listing)
     else
-      render :edit 
+      render :edit
     end
   end
 

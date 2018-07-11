@@ -13,7 +13,7 @@ done: Renter has a list of rentals
 done: add migration for locking in price for exchange so owner can't jack it up cost of exchange
 
 * analytics fixed for Skateboard with expansion later
-
+* add to layout the link back to user's show page
 
 MS
 * Calendar display of rentals (unavailable)

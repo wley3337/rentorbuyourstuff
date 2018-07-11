@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
 
   def show
-    
+
   end
 
   def new
@@ -48,10 +48,14 @@ class UsersController < ApplicationController
     end
 
     def find_user
-      @user = current_user
+      if current_user
+        @user = current_user
+      else
+        flash[:notice] = "Please Log In"
+        redirect_to root_path
+      end
     end
 
 
-    
 
 end
