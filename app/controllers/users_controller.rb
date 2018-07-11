@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :find_user, only:[:show, :edit, :update, :destroy]
 
 
+
   def show
     
   end
@@ -47,8 +48,9 @@ class UsersController < ApplicationController
     end
 
     def find_user
-      @user = User.find(params[:id])
+      @user = current_user
     end
+
 
     
 

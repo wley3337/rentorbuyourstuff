@@ -1,5 +1,5 @@
 <h1><%= @listing.product_name%></h1>
-<h3>Owner: <%=link_to @listing.owner.name, user_path(@listing.owner)%></h3>
+<h3>Owner: <%=link_to @listing.owner.username, user_path(@listing.owner)%></h3>
 
 <h3>Prices:</h3>
 <p> Rental Price:  <%= number_to_currency(@listing.rental_price)%>  Buy Price:  <%= number_to_currency(@listing.buy_price) %> </p>
@@ -20,6 +20,7 @@
     <%end%>
   </ul>
 <%end%>
+
 
 
 
