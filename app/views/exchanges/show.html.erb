@@ -3,8 +3,8 @@
 <h3>Owner Name: <%= @owner.name %></h3>
 <h3>Renter Name: <%= link_to @renter.name, user_path(@renter) %></h3>
 <h3>Listing Name: <%= link_to @listing.product_name, listing_path(@listing) %></h3>
-<h3>Start Date: <%= @exchange.start_date %></h3>
-<h3>End Date: <%= @exchange.end_date %></h3>
+<h3>Start Date: <%= @exchange.start_date_format %></h3>
+<h3>End Date: <%= @exchange.end_date_format %></h3>
 
-<h3>Duration: <%= @exchange.get_duration %></h3>
+<h3>Duration: <%= @exchange.get_duration %> days</h3>
 <h3>Rental Cost: <%= number_to_currency(@exchange.get_rental_cost) %></h3>

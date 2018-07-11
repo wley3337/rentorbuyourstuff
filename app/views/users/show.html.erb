@@ -10,6 +10,19 @@
     <ul>
         <% @user.listings.each do |listing| %>
             <li><%=render partial: "/listings/listing_summary", locals: { listing: listing } %></li>
+              <table>
+                <p>Exchanges: </p>
+                <% listing.exchanges.each do |exchange| %>
+                <tr>
+                  <td>
+                    <%=link_to "#{exchange.start_date_format} - #{exchange.end_date_format}",exchange_path(exchange) %>
+                  </td>
+                  <td>
+                    Rental Value:  <%=number_to_currency(exchange.total_price)%>
+                  </td>
+                </tr>
+                <%end%>
+              </table>
         <% end %>
     </ul>
 <% end %>
@@ -31,14 +44,14 @@
 <%= link_to "All Listings", listings_path %>
 
 <%= form_tag edit_user_path(@user), method: 'get' do %>
-    <%= submit_tag 'Edit User' %>
+    <%= submit_tag 'Edit Profile' %>
 <% end %>
 
 
 <%= form_tag new_listing_path, method: 'get' do %>
     <%= submit_tag 'Create A New Listing' %>
 <% end %>
-        
+
 
 
 

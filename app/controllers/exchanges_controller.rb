@@ -18,9 +18,8 @@ class ExchangesController < ApplicationController
 
   def new
     if current_user != nil
-      if request.env["HTTP_REFERER"]
-        listing_id = request.env["HTTP_REFERER"].split("/")[-1].to_i
-        @listing = Listing.find(listing_id)
+      if params[:listing_id]
+        @listing = Listing.find(params[:listing_id])
           if @listing.owner_id == current_user.id
             flash[:notice] = "You can not rent your own item"
             redirect_to user_path(current_user)
@@ -40,11 +39,17 @@ class ExchangesController < ApplicationController
   def create
     @exchange = Exchange.new(exchange_params)
     @exchange.total_price = @exchange.get_rental_cost
+    @listing = Listing.find(@exchange.listing_id)
+    if @listing.date_conflict?(@exchange.start_date, @exchange.end_date) && @exchange.valid?
+        @exchange.errors.add(:date_conflict, ": Rental times conflict with other exchanges")
+        render :new
+    else
       if @exchange.save
         redirect_to user_path(@exchange.renter_id)
       else
         render :new
       end
+    end
   end
 
   private

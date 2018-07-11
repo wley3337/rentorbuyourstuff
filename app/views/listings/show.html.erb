@@ -1,5 +1,5 @@
 <h1><%= @listing.product_name%></h1>
-<h3>Owner: <%=link_to @listing.owner.username, user_path(@listing.owner)%></h3>
+<h3>Owner: <%=@listing.owner.username%></h3>
 
 <h3>Prices:</h3>
 <p> Rental Price:  <%= number_to_currency(@listing.rental_price)%>  Buy Price:  <%= number_to_currency(@listing.buy_price) %> </p>
@@ -15,14 +15,17 @@
 <% if @listing.exchanges.any? %>
   <h3>Not Available:</h3>
   <ul>
-    <% @listing.exchanges.each do |exchange|%>
+    <% @listing.future_exchanges.each do |exchange|%>
       <li><%=exchange.start_date_format%> - <%=exchange.end_date_format%></li>
     <%end%>
   </ul>
 <%end%>
 
-<%= link_to "Rent this!", new_exchange_path%>
+<%= link_to "Rent this!", "/exchanges/#{@listing.id}/new"%>
 
+<% if current_user.id == @listing.owner_id%>
+  <%=link_to "Edit Listing", edit_listing_path(@listing)%>
+<%end%>
 
 
 

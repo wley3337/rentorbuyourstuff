@@ -1,4 +1,4 @@
-<h1>User Edit</h1>
+<h1><%=current_user.username%> profile:</h1>
 
   <%= render partial:"/shared/error_partial", locals: {object: @user} %>
 
@@ -9,7 +9,5 @@
 <%=f.password_field :password%>
 <%=f.label :password_confirmation %>
 <%=f.password_field :password_confirmation%>
-<%=f.submit "Create New User"%>
+<%=f.submit "Update Profile"%>
 <%end%>
-
-<!-- restrict username field  -->

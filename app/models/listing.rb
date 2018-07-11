@@ -9,6 +9,17 @@ class Listing < ApplicationRecord
   validates :buy_price, numericality: true, allow_blank: true
 
 
+  def future_exchanges
+    self.exchanges.select { |exchange| exchange.start_date > Time.now }
+  end
 
+  def date_conflict?(st_date, e_date)
+    self.exchanges.each do |exchange|
+      if !(st_date < exchange.start_date && e_date < exchange.start_date || exchange.end_date < st_date)
+        return true
+      end
+    end
+    false
+  end
 
 end

@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   root "listings#index"
   post "/login", to: 'sessions#create'
   delete "/logout", to: 'sessions#destroy'
-  resources :exchanges, only: [:show, :new, :create]
+  get "/exchanges/:listing_id/new", to: 'exchanges#new'
+  resources :exchanges, only: [:show, :create]
   resources :listings
   resources :users, only: [:show, :new, :create, :edit, :update, :destroy]
 
