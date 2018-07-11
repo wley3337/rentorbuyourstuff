@@ -3,10 +3,8 @@
 display rental time period and total cost. confirm active action futur feature make forms partial for rent and for buy  -->
 
 
-Owner's Name: <%= @exchange.get_owner_name%>
-Renter's Name: <%= @exchange.get_renter_name %>
 
-<%= form_for @exchange do |f| %>  
+<%= form_for @exchange do |f| %>
 
   <%= f.label :start_date %>
   <%= f.date_field :start_date %>

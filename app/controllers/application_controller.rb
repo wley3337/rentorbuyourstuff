@@ -7,4 +7,9 @@ helper_method :current_user
     end
   end
 
+  def path_not_found
+    flash[:notice] = "Path not found"
+    redirect_to request.env["HTTP_REFERER"]
+  end
+
 end
