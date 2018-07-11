@@ -25,3 +25,34 @@ MS
 SC
 * adding location searches
 * location specific statistics for owners (and renters?)
+
+
+Testing
+------------
+* Rout Testing:
+  -Any URL goes to path not found and render index
+  -not logged-in from listings show page can't create new exchange
+
+* Login Path:
+  * Not logged in
+    -can't see user/show
+  * Logged in
+    -can't rent own item
+    -Can't view exchange if not a part of it
+
+* Methods
+  * Exchange
+    - #get_owner_name
+    - #get_rental_cost
+    - #get_renter_name
+    - #start_date_format
+    - #end_date_format
+
+  * Listing
+    - #date_conflict?(st,end)
+    - #future_exchanges
+
+* Validation
+  - no duplicate listing names
+  - end_date > start_date
+  - list without buy_price

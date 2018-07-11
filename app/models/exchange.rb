@@ -49,7 +49,6 @@ class Exchange < ApplicationRecord
     rental_per_day = listing.rental_price
 
     rental_cost = rental_per_day * self.get_duration.to_f
-    # number_to_currency(rental_cost)
   end
 
 
