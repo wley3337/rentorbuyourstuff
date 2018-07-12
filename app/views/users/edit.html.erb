@@ -1,13 +1,16 @@
 <h1><%=current_user.username%> profile:</h1>
 
-  <%= render partial:"/shared/error_partial", locals: {object: @user} %>
+<%= render partial:"/shared/error_partial", locals: {object: @user} %>
 
 <%= form_for @user do |f| %>
-<%=f.label :name %>
-<%=f.text_field :name%>
-<%=f.label :password %>
-<%=f.password_field :password%>
-<%=f.label :password_confirmation %>
-<%=f.password_field :password_confirmation%>
-<%=f.submit "Update Profile"%>
+  <%=f.label :name %>
+  <%=f.text_field :name%>
+
+  <%=f.label :password %>
+  <%=f.password_field :password%>
+
+  <%=f.label :password_confirmation %>
+  <%=f.password_field :password_confirmation%>
+
+  <%=f.submit "Update Profile"%>
 <%end%>

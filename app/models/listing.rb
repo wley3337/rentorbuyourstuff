@@ -8,7 +8,7 @@ class Listing < ApplicationRecord
   validates_presence_of :item_value, :rental_price, :zip_code, numericality: true
   validates :buy_price, numericality: true, allow_blank: true
 
-
+#-----------helper methods for date conflicts and displaying only future exchanges-----------
   def future_exchanges
     self.exchanges.select { |exchange| exchange.start_date > Time.now }
   end

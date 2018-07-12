@@ -5,7 +5,7 @@ class Exchange < ApplicationRecord
   validates :end_date, presence: true
   validate :end_after_start
 
-#---Validations
+#---------Validations---------------
   def end_after_start
     if end_date < start_date
       errors.add(:end_date, "End date must be after start date")
@@ -13,7 +13,7 @@ class Exchange < ApplicationRecord
   end
 
 
-#----
+#------helper methods----------
 
 
   def start_date_format

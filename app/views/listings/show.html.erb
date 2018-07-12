@@ -2,23 +2,23 @@
 <h3>Owner: <%=@listing.owner.username%></h3>
 
 <h3>Prices:</h3>
-<p> Rental Price:  <%= number_to_currency(@listing.rental_price)%>  Buy Price:  <%= number_to_currency(@listing.buy_price) %> </p>
+  <p> Rental Price:  <%= number_to_currency(@listing.rental_price)%>  Buy Price:  <%= number_to_currency(@listing.buy_price) %> </p>
 <div class="product_description">
   <h3>Item Description:</h3>
-  <p>Condition: <%= @listing.quality%></p>
-  <%= @listing.product_description%>
+    <p>Condition: <%= @listing.quality%></p>
+    <%= @listing.product_description%>
 </div>
 
 <h3>Location:</h3>
-<p>Address: <%= @listing.address%> <%=@listing.zip_code%></p>
+  <p>Address: <%= @listing.address%> <%=@listing.zip_code%></p>
 
 <% if @listing.exchanges.any? %>
   <h3>Not Available:</h3>
-  <ul>
-    <% @listing.future_exchanges.each do |exchange|%>
-      <li><%=exchange.start_date_format%> - <%=exchange.end_date_format%></li>
-    <%end%>
-  </ul>
+    <ul>
+      <% @listing.future_exchanges.each do |exchange|%>
+        <li><%=exchange.start_date_format%> - <%=exchange.end_date_format%></li>
+      <%end%>
+    </ul>
 <%end%>
 
 <%= link_to "Rent this!", "/exchanges/#{@listing.id}/new"%>

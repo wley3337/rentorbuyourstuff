@@ -5,5 +5,5 @@ class User < ApplicationRecord
   has_secure_password
   validates :username, presence: true, uniqueness: { case_sensitive: false}
 
-  #we write a custom method to get renter info by forcing the key asssociation
+  
 end

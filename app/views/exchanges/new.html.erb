@@ -4,16 +4,15 @@
 display rental time period and total cost. confirm active action futur feature make forms partial for rent and for buy  -->
 <h4>Dates unavailable:</h4>
 <ul>
-<% @listing.future_exchanges.each do |exchange| %>
-  <li><%=exchange.start_date_format%> - <%=exchange.end_date_format%></li>
-<%end%>
+  <% @listing.future_exchanges.each do |exchange| %>
+    <li><%=exchange.start_date_format%> - <%=exchange.end_date_format%></li>
+  <%end%>
 </ul>
 
 <%= render partial: "/shared/error_partial", locals: {object: @exchange} %>
 <%= form_for @exchange do |f| %>
-<%= f.hidden_field :listing_id, value: @listing.id%>
-<%= f.hidden_field :renter_id, value: current_user.id%>
-
+  <%= f.hidden_field :listing_id, value: @listing.id%>
+  <%= f.hidden_field :renter_id, value: current_user.id%>
 
   <%= f.label :start_date %>
   <%= f.date_field :start_date, min: Time.now %>
