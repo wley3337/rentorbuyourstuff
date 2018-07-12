@@ -35,10 +35,10 @@ Testing
 
 * Login Path:
   * Not logged in
-      * can't see user/show
-  * Logged in-Essa
-    -can't rent own item
-    -Can't view exchange if not a part of it
+    * can't see user/show
+  * Logged in:
+    * can't rent own item
+    * Can't view exchange if not a part of it
 
 * Methods
   * Exchange
@@ -49,10 +49,10 @@ Testing
     * #end_date_format
 
   * Listing
-    - #date_conflict?(st,end)
+    * #date_conflict?(st,end)
     - #future_exchanges
 
 * Validation-will
   - no duplicate listing names
   * end_date > start_date
-  - list without buy_price
+  * list without buy_price
