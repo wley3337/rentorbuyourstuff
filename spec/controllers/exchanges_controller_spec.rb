@@ -28,7 +28,9 @@ RSpec.describe ExchangesController, type: :controller do
     end
 
     it 'user cannot view exchange if not part of it' do
+
       get :show, params: { id: @e1.id }, session: {user_id: @u3.id}
+
       expect(response).to redirect_to(user_path(@u3))
     end
 

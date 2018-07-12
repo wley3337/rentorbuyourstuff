@@ -16,17 +16,21 @@ require 'rails_helper'
       @u1.listings << @l1
     end
 
-
-
-
     it "can create listing with-out buy price" do
       visit "/"
       fill_in "username", with: "e1"
       fill_in "password", with: "essa123"
       click_on "Log In"
-      click_on ""
-
-
+      click_on "Create A New Listing"
+      fill_in "Product name", with: "Guitar"
+      fill_in "Product description", with: "Guitar fdescribe"
+      fill_in "Item value", with: "3"
+      fill_in "Rental price", with: "3"
+      fill_in "Quality", with: "Good"
+      fill_in "Address", with: "123 street"
+      fill_in "Zip code", with: "20009"
+      click_on "Submit Listing"
+      expect(page.body).to include "Guitar fdescribe"
     end
 
 end
