@@ -1,6 +1,6 @@
 
 SB
-* Date/time formatting
+done: Date/time formatting
 done: User log_in
 done: User log_out
 done: Owner sees info on their listings
@@ -35,24 +35,24 @@ Testing
 
 * Login Path:
   * Not logged in
-    -can't see user/show
-  * Logged in
+    * can't see user/show
+  * Logged in-Essa
     -can't rent own item
     -Can't view exchange if not a part of it
 
 * Methods
   * Exchange
-    - #get_owner_name
-    - #get_rental_cost
-    - #get_renter_name
-    - #start_date_format
-    - #end_date_format
+    * #get_owner_name
+    * #get_rental_cost
+    * #get_renter_name
+    * #start_date_format
+    * #end_date_format
 
   * Listing
     - #date_conflict?(st,end)
     - #future_exchanges
 
-* Validation
+* Validation-will
   - no duplicate listing names
-  - end_date > start_date
+  * end_date > start_date
   - list without buy_price
