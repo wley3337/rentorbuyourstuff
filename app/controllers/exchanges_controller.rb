@@ -2,7 +2,9 @@ class ExchangesController < ApplicationController
 
   def show
     #--confirms user is logged in-----
-    if current_user != nil
+    if current_user != nil  
+    # instead of repeating this check, it might be easier to make a 
+    # before action where you redirect if not logged in
       @exchange = Exchange.find(params[:id ])
       @renter = User.find(@exchange.renter_id)
       @listing = Listing.find(@exchange.listing_id)
@@ -32,7 +34,7 @@ class ExchangesController < ApplicationController
           else
             @exchange = Exchange.new
           end
-      else
+      else  # I'm not sure how this would happen if user went to a real URL
         flash[:notice] = "Please visit a listing page to create an Exchange"
         redirect_to user_path(current_user)
       end
@@ -47,6 +49,7 @@ class ExchangesController < ApplicationController
     @exchange.total_price = @exchange.get_rental_cost
     @listing = Listing.find(@exchange.listing_id)
     #--Confirms that dates do not conflict
+    # this logic might be better in the model as a validation function
     if @listing.date_conflict?(@exchange.start_date, @exchange.end_date)
         @exchange.errors.add(:date_conflict, ": Rental times conflict with other exchanges")
         render :new

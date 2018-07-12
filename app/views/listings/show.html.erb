@@ -14,6 +14,7 @@
 
 <% if @listing.exchanges.any? %>
   <h3>Not Available:</h3>
+  <%# this had some duplicate date listings when I ran it %>
     <ul>
       <% @listing.future_exchanges.each do |exchange|%>
         <li><%=exchange.start_date_format%> - <%=exchange.end_date_format%></li>
