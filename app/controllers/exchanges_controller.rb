@@ -42,15 +42,13 @@ class ExchangesController < ApplicationController
     @exchange = Exchange.new(exchange_params)
     @exchange.total_price = @exchange.get_rental_cost
     @listing = Listing.find(@exchange.listing_id)
-    if @listing.date_conflict?(@exchange.start_date, @exchange.end_date) && @exchange.valid?
+    if @listing.date_conflict?(@exchange.start_date, @exchange.end_date)
         @exchange.errors.add(:date_conflict, ": Rental times conflict with other exchanges")
         render :new
-    else
-      if @exchange.save
+    elsif @exchange.save
         redirect_to user_path(@exchange.renter_id)
-      else
+    else
         render :new
-      end
     end
   end
 

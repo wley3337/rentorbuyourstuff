@@ -7,9 +7,6 @@ RSpec.describe Exchange, type: :model do
     describe 'exchange methods' do
         before(:each) do
 
-            User.destroy_all
-            Listing.destroy_all
-            Exchange.destroy_all
 
             @u1 = User.create(name: "Anthony", username: "Anthony1", password: "password")
             @u2 = User.create(name: "Henry", username: "Henry1", password: "password")
