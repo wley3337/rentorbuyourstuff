@@ -22,8 +22,14 @@ u1.listings << l2
 u1.listings << l3
 u2.listings << l1
 
-e1 = Exchange.create(renter_id: 3, listing_id: 2, start_date: "2018-10-24", end_date: "2018-10-31")
+e1 = Exchange.new(renter_id: 3, listing_id: 2, start_date: "2018-10-24", end_date: "2018-10-31")
+e1.total_price = e1.get_rental_cost
+e1.save
 
-e2 = Exchange.create(renter_id: 3, listing_id: 1, start_date: "2018-11-24", end_date: "2018-12-10")
+e2 = Exchange.new(renter_id: 3, listing_id: 1, start_date: "2018-11-24", end_date: "2018-12-10")
+e2.total_price = e1.get_rental_cost
+e2.save
 
-e3 = Exchange.create(renter_id: 2, listing_id: 3, start_date: "2018-12-12", end_date: "2018-12-21")
+e3 = Exchange.new(renter_id: 2, listing_id: 3, start_date: "2018-12-12", end_date: "2018-12-21")
+e3.total_price = e3.get_rental_cost
+e3.save
