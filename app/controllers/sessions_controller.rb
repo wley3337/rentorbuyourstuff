@@ -1,12 +1,6 @@
 class SessionsController < ApplicationController
 
-  # def new
-  #   render layout: false
-  # end
-
   def create
-
-
     @username = params[:username]
     user = User.find_by(username: @username)
     if user
@@ -15,9 +9,11 @@ class SessionsController < ApplicationController
           redirect_to user_path(user)
       else
         flash[:notice] = "There is no user/password as entered"
+        #--redirects to current page
         redirect_to request.env["HTTP_REFERER"]
       end
     else
+      #--redirects to current page
       flash[:notice] = "There is no user/password as entered"
       redirect_to request.env["HTTP_REFERER"]
     end

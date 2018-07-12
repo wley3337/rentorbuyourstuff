@@ -8,7 +8,6 @@ class UsersController < ApplicationController
   def new
     @user = User.new
     render layout: false
-
   end
 
   def create
@@ -44,6 +43,8 @@ class UsersController < ApplicationController
     end
 
     def find_user
+      #--uses current user so you can not force the URL into another
+       #-user's showpage
       if current_user
         @user = current_user
       else
@@ -51,5 +52,4 @@ class UsersController < ApplicationController
         redirect_to root_path
       end
     end
-
 end

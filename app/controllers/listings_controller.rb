@@ -28,6 +28,7 @@ class ListingsController < ApplicationController
 
   def edit
     if current_user != nil
+      #--redirects if owner is not user
       redirect_to listing_path(@listing)  unless @listing.owner_id == current_user.id
     else
       flash[:notice] = "You must be logged in to edit a listing"
