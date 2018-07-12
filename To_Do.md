@@ -35,7 +35,7 @@ Testing
 
 * Login Path:
   * Not logged in
-    * can't see user/show
+      * can't see user/show
   * Logged in-Essa
     -can't rent own item
     -Can't view exchange if not a part of it
