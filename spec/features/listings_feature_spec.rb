@@ -33,4 +33,11 @@ require 'rails_helper'
       expect(page.body).to include "Guitar fdescribe"
     end
 
+    it 'redirects to index page if path is not found' do
+
+      visit '/randompath'
+
+      expect(page.body).to include "Path not found"
+    end
+
 end
