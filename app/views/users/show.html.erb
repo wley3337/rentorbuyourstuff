@@ -5,7 +5,7 @@
 <h3>Listings</h3>
 
 <% if @user.listings.empty? %>
-    <h4>You current have 0 listings.</h4>
+    <h4>You currently have 0 listings.</h4>
 <% else %>
     <ul>
         <% @user.listings.each do |listing| %>
@@ -30,7 +30,7 @@
 <h3>Rentals</h3>
 
 <% if @user.exchanges.empty? %>
-    <h4>You are not currently renting any items</h4>
+    <h4>You are not currently renting any items.</h4>
 <% else %>
     <ul>
         <% @user.exchanges.each do |exchange| %>
@@ -41,7 +41,6 @@
 
 <br>
 <br>
-<%= link_to "All Listings", listings_path %>
 
 <%= form_tag edit_user_path(@user), method: 'get' do %>
     <%= submit_tag 'Edit Profile' %>
