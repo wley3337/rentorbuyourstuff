@@ -22,4 +22,7 @@ class Listing < ApplicationRecord
     false
   end
 
+
+  
+
 end
