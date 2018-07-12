@@ -53,6 +53,6 @@ Testing
     - #future_exchanges
 
 * Validation-will
-  - no duplicate listing names
+  * no duplicate listing names
   * end_date > start_date
   * list without buy_price

@@ -33,4 +33,13 @@ require 'rails_helper'
       expect(page.body).to include "Guitar fdescribe"
     end
 
+    it "not logged-in from listings show page can't create new exchange" do
+      visit "/"
+      visit "/exchange/1"
+      expect(page.body).to include "Please log in to see your Exchanges"
+    end
+
+
+
+
 end
