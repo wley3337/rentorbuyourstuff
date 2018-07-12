@@ -29,7 +29,7 @@ RSpec.describe ExchangesController, type: :controller do
     end
 
     it 'user cannot view exchange if not part of it' do
-      get :show, p  arams: { exchange: {renter_id: @u2.id, listing_id: @l1.id, start_date: "2023-10-24", end_date: "2024-10-25", total_price: 10.00}}, session: {user_id: @u3.id}
+      get :show, params: { exchange: {renter_id: @u2.id, listing_id: @l1.id, start_date: "2023-10-24", end_date: "2024-10-25", total_price: 10.00}}, session: {user_id: @u3.id}
       expect(response).to redirect_to(user_path(@u3))
     end
 
