@@ -1,5 +1,5 @@
 require 'rails_helper'
-require 'rake'
+
 RSpec.describe ExchangesController, type: :controller do
 
   describe 'create exchange' do

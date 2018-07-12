@@ -17,6 +17,7 @@ class ExchangesController < ApplicationController
   end
 
   def new
+
     if current_user != nil
       if params[:listing_id]
         @listing = Listing.find(params[:listing_id])
@@ -37,6 +38,7 @@ class ExchangesController < ApplicationController
   end
 
   def create
+  
     @exchange = Exchange.new(exchange_params)
     @exchange.total_price = @exchange.get_rental_cost
     @listing = Listing.find(@exchange.listing_id)
