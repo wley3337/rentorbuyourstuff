@@ -7,28 +7,60 @@
 <% if @user.listings.empty? %>
     <h4>You currently have 0 listings.</h4>
 <% else %>
-    <ul>
-        <% @user.listings.each do |listing| %>
-            <li><%=render partial: "/listings/listing_summary", locals: { listing: listing } %></li>
-              <table>
-                <p>Exchanges: </p>
-                    <% if  listing.exchanges.empty? %>
-                        <p>This listing currently has zero exchanges.</p>
-                    <% else %>
-                        <% listing.exchanges.each do |exchange| %>
-                        <tr>
-                        <td>
-                            <%=link_to "#{exchange.start_date_format} - #{exchange.end_date_format}",exchange_path(exchange) %>
-                        </td>
-                        <td>
-                            Rental Value:  <%=number_to_currency(exchange.total_price)%>
-                        </td>
-                        </tr>
-                        <%end%>
-                    <% end %>
-              </table>
-        <% end %>
-    </ul>
+    <h4>Active Listings:</h4>
+      <% if @user.active_listings.empty? %>
+        <p>You have no active listings.</p>
+      <%else%>
+        <ul>
+            <% @user.active_listings.each do |listing| %>
+                <li><%=render partial: "/listings/listing_summary", locals: { listing: listing } %></li>
+                  <table>
+                    <p>Exchanges: </p>
+                        <% if  listing.exchanges.empty? %>
+                            <p>This listing currently has no active exchanges.</p>
+                        <% else %>
+                            <% listing.exchanges.each do |exchange| %>
+                            <tr>
+                            <td>
+                                <%=link_to "#{exchange.start_date_format} - #{exchange.end_date_format}",exchange_path(exchange) %>
+                            </td>
+                            <td>
+                                Rental Value:  <%=number_to_currency(exchange.total_price)%>
+                            </td>
+                            </tr>
+                            <%end%>
+                        <% end %>
+                  </table>
+            <% end %>
+        </ul>
+      <%end%>
+    <h4>Deactived Listings:</h4>
+      <% if @user.deactivated_listings.empty? %>
+        <p>All your listings are currently active.</p>
+      <%else%>
+        <ul>
+            <% @user.deactivated_listings.each do |listing| %>
+                <li><%=render partial: "/listings/listing_summary", locals: { listing: listing } %></li>
+                  <table>
+                    <p>Exchanges: </p>
+                        <% if  listing.exchanges.empty? %>
+                            <p>This listing currently has no active exchanges.</p>
+                        <% else %>
+                            <% listing.exchanges.each do |exchange| %>
+                            <tr>
+                            <td>
+                                <%=link_to "#{exchange.start_date_format} - #{exchange.end_date_format}",exchange_path(exchange) %>
+                            </td>
+                            <td>
+                                Rental Value:  <%=number_to_currency(exchange.total_price)%>
+                            </td>
+                            </tr>
+                            <%end%>
+                        <% end %>
+                  </table>
+            <% end %>
+        </ul>
+      <%end%>
 <% end %>
 
 <h3>Rentals</h3>

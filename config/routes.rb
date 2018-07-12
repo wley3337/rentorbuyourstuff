@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get "/exchanges/:listing_id/new", to: 'exchanges#new'
   resources :exchanges, only: [:show, :create]
   resources :listings
-  resources :users, only: [:show, :new, :create, :edit, :update, :destroy]
+  resources :users, only: [:show, :new, :create, :edit, :update]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   match "*path", to: "application#path_not_found", via: [:get, :post]

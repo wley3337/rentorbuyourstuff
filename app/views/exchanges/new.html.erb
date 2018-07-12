@@ -1,24 +1,30 @@
 <h1><%=@listing.product_name%></h1>
 <h3><%=@listing.address%>, <%=@listing.zip_code%></h3>
-<!-- ability to create a new exchange should link from listing show page get listings info from params
-display rental time period and total cost. confirm active action futur feature make forms partial for rent and for buy  -->
-<h4>Dates unavailable:</h4>
-<ul>
-  <% @listing.future_exchanges.each do |exchange| %>
-    <li><%=exchange.start_date_format%> - <%=exchange.end_date_format%></li>
-  <%end%>
-</ul>
 
-<%= render partial: "/shared/error_partial", locals: {object: @exchange} %>
-<%= form_for @exchange do |f| %>
-  <%= f.hidden_field :listing_id, value: @listing.id%>
-  <%= f.hidden_field :renter_id, value: current_user.id%>
+<% if @listing.deleted == false %>
+  <h4>Dates unavailable:</h4>
+    <ul>
+      <% @listing.future_exchanges.each do |exchange| %>
+        <li><%=exchange.start_date_format%> - <%=exchange.end_date_format%></li>
+      <%end%>
+    </ul>
 
-  <%= f.label :start_date %>
-  <%= f.date_field :start_date, min: Time.now %>
+  <%= render partial: "/shared/error_partial", locals: {object: @exchange} %>
+  <%= form_for @exchange do |f| %>
+    <%= f.hidden_field :listing_id, value: @listing.id%>
+    <%= f.hidden_field :renter_id, value: current_user.id%>
 
-  <%= f.label :end_date %>
-  <%= f.date_field :end_date, min: Time.now %>
+    <%= f.label :start_date %>
+    <%= f.date_field :start_date, min: Time.now %>
 
-  <%= f.submit  %>
-<% end %>
+    <%= f.label :end_date %>
+    <%= f.date_field :end_date, min: Time.now %>
+
+    <%= f.submit  %>
+  <% end %>
+
+<%else%>
+  <br>
+  <br>
+  <h3>This item is currently unavailable for rental.</h3>
+<%end%>

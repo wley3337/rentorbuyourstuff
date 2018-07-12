@@ -5,5 +5,15 @@ class User < ApplicationRecord
   has_secure_password
   validates :username, presence: true, uniqueness: { case_sensitive: false}
 
-  
+  def deactivated_listings
+    self.listings.select do |listing|
+      listing.deleted == true
+    end
+  end
+
+  def active_listings
+    self.listings.select do |listing|
+      listing.deleted == false
+    end
+  end
 end

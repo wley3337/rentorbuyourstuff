@@ -20,8 +20,11 @@
       <%end%>
     </ul>
 <%end%>
-
-<%= link_to "Rent this!", "/exchanges/#{@listing.id}/new"%>
+<% if @listing.deleted == false %>
+  <%= link_to "Rent this!", "/exchanges/#{@listing.id}/new"%>
+<%else%>
+  <p>This is item is no longer available to rent.</p>
+<%end%>
 <% if current_user%>
   <% if current_user.id == @listing.owner_id%>
     <%=link_to "Edit Listing", edit_listing_path(@listing)%>

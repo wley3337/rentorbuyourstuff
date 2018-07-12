@@ -1,3 +1,43 @@
 <h1>Edit Listing</h1>
-<h3>Note: changing the rental price applies only to newly created exchanges </h3>
-<%= render partial: 'listing_form', locals: { listing: @listing } %>
+<h3>
+  Note: changing the rental price applies only to newly created exchanges and
+  making item unavailable to rent does not cancel current exchanges.
+</h3>
+
+
+  <%= render partial: "/shared/error_partial", locals: {object: @listing}%>
+
+  <%= form_for @listing do |f|%>
+      <%= f.label :product_name %>
+      <%= f.text_field :product_name%><br>
+
+      <%= f.label :product_description %>
+      <%= f.text_field :product_description%><br>
+
+      <%= f.label :item_value %>
+      <%= f.number_field :item_value%><br>
+
+      <%= f.label :rental_price %>
+      <%= f.number_field :rental_price%><br>
+
+      <%= f.label :buy_price %>
+      <%= f.number_field :buy_price%><br>
+
+      <%= f.label :quality %>
+      <%= f.text_field :quality%><br>
+
+      <%= f.label :address %>
+      <%= f.text_field :address%><br>
+
+      <%= f.label :zip_code %>
+      <%= f.number_field :zip_code%><br>
+
+      <%= f.hidden_field :owner_id, :value => current_user.id %>
+
+      <%= f.label :deleted, "Available to rent"%>
+      <%= f.radio_button :deleted, false%><br>
+      <%= f.label :deleted, "Unvailable to rent"%>
+      <%= f.radio_button :deleted, true%><br>
+
+      <%= f.submit "Submit Listing"%>
+  <%end%>

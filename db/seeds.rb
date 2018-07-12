@@ -18,9 +18,12 @@ l2 = Listing.create(product_name: "Guitar", product_description: "Accoustic Guit
 
 l3 = Listing.create(product_name: "Laptop", product_description: "Mac Book Pro", item_value: 2000.00, rental_price: 25.00, buy_price: 1700.00, quality: "Slow", address: "213 Street Rd.", zip_code: 20009)
 
+l4 = Listing.create(product_name: "Laptop2", product_description: "Mac Book Pro", item_value: 2000.00, rental_price: 25.00, buy_price: 1700.00, quality: "Broken", address: "213 Street Rd.", zip_code: 20009, deleted: true)
+
 u1.listings << l2
 u1.listings << l3
 u2.listings << l1
+u1.listings << l4
 
 e1 = Exchange.new(renter_id: 3, listing_id: 2, start_date: "2018-10-24", end_date: "2018-10-31")
 e1.total_price = e1.get_rental_cost
