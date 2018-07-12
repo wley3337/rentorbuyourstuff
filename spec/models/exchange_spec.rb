@@ -3,6 +3,11 @@ require 'rails_helper'
 
 
 Rspec.describe Exchange, type: :model do
+# let(:exchange_test_1) {{renter_id: 1, listing_id: 2, start_date: 10-21-1997, end_date: 10-24-1997}}
+#
+# let(:exchange_test_2) {{renter_id: 2, listing_id: 3, start_date: 10-21-1998, end_date: 10-24-1998}}
+#
+# let(:exchange_test_1) {{renter_id: 1, listing_id: 2, start_date: 10-21-1999, end_date: 10-24-1999}}
 
     describe 'exchange methods' do
         before(:each) do
