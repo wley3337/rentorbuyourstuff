@@ -33,9 +33,14 @@ require 'rails_helper'
       expect(page.body).to include "Guitar fdescribe"
     end
 
+    it 'redirects to index page if path is not found' do
+      visit '/randompath'
+      expect(page.body).to include "Path not found"
+    end
+
     it "not logged-in from listings show page can't create new exchange" do
       visit "/"
-      visit "/exchange/1"
+      visit "/exchanges/1"
       expect(page.body).to include "Please log in to see your Exchanges"
     end
 

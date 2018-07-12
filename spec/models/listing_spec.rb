@@ -26,5 +26,7 @@ RSpec.describe Listing, type: :model do
 
             expect(@listing.date_conflict?("2018-10-23", "2018-10-26")).to eq(true)
        end
+
+       
     end
 end
