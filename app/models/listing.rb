@@ -22,7 +22,9 @@ class Listing < ApplicationRecord
     false
   end
 
-
+  def self.existing_listings
+    self.where(deleted: false)
+  end
   
 
 end

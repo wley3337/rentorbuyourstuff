@@ -2,7 +2,7 @@ class ListingsController < ApplicationController
   before_action :find_listing, only:[:show, :edit, :update, :destroy]
 
   def index
-    @listings = Listing.all
+    @existinglistings = Listing.existing_listings
   end
 
   def show
@@ -45,15 +45,16 @@ class ListingsController < ApplicationController
   end
 
   def destroy
-    #don't forget to manage all dependants like exchanges
+    #--keep acutal database record for analitics
+    @listing.deleted = true
+    @listing.save
+    redirect_to user_path(current_user)
   end
-
-
 
   private
 
     def list_params
-      params.require(:listing).permit(:product_name, :product_description, :item_value, :rental_price, :buy_price, :quality, :address, :zip_code, :owner_id)
+      params.require(:listing).permit(:product_name, :product_description, :item_value, :rental_price, :buy_price, :quality, :address, :zip_code, :owner_id, :deleted)
     end
 
     def find_listing
