@@ -26,4 +26,7 @@ require 'rails_helper'
       click_on "Log In"
       click_on ""
 
+
     end
+
+end
