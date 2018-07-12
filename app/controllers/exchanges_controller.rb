@@ -1,11 +1,13 @@
 class ExchangesController < ApplicationController
 
   def show
+    #--confirms user is logged in-----
     if current_user != nil
       @exchange = Exchange.find(params[:id ])
       @renter = User.find(@exchange.renter_id)
       @listing = Listing.find(@exchange.listing_id)
       @owner = User.find(@listing.owner_id)
+      #---confirms that user is either renter or owner of the product -------
       if @owner.id != current_user.id && @renter.id != current_user.id
         flash[:notice] = "You can only view Exchanges that you are part of"
         redirect_to user_path(current_user)
@@ -17,10 +19,13 @@ class ExchangesController < ApplicationController
   end
 
   def new
-
+    #--confirms user is logged in-----
     if current_user != nil
+      #--confirms user is coming from a listing show page *required for
+       #-listing id
       if params[:listing_id]
         @listing = Listing.find(params[:listing_id])
+          #---confirms that user is not the owner of listing -------
           if @listing.owner_id == current_user.id
             flash[:notice] = "You can not rent your own item"
             redirect_to user_path(current_user)
@@ -38,10 +43,10 @@ class ExchangesController < ApplicationController
   end
 
   def create
-  
     @exchange = Exchange.new(exchange_params)
     @exchange.total_price = @exchange.get_rental_cost
     @listing = Listing.find(@exchange.listing_id)
+    #--Confirms that dates do not conflict
     if @listing.date_conflict?(@exchange.start_date, @exchange.end_date)
         @exchange.errors.add(:date_conflict, ": Rental times conflict with other exchanges")
         render :new
