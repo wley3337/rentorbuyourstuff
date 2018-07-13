@@ -1,8 +1,8 @@
 <%= form_tag '/login', class: "form-inline my-2 my-lg-0 pull-right" do%>
-    <%= label_tag :username, "Username", class: "mr-1" %>
+    <%= label_tag :username, "Username", class: "mr-1 light-text-color" %>
     <%= text_field_tag :username %>
 
-    <%= label_tag :password, "Password", class: "mr-1 ml-2" %>
+    <%= label_tag :password, "Password", class: "mr-1 ml-2 light-text-color" %>
     <%= password_field_tag :password %>
 
     <%= submit_tag "Log In", class: "ml-1 btn btn-primary" %>
