@@ -16,6 +16,8 @@ class Exchange < ApplicationRecord
 #------helper methods----------
 
 
+  # is there a difference between these two methods?  Can one
+  # method be used for both?
   def start_date_format
     self.start_date.strftime("%a, %B %e, %Y")
   end
@@ -25,6 +27,7 @@ class Exchange < ApplicationRecord
   end
 
 
+  # same as above--if two functions are so similar, I'd look to combine them
   def get_owner_name
     id = self.listing.owner_id
     owner = User.find(id)
