@@ -11,25 +11,48 @@
 
 <h3>Location:</h3>
   <p>Address: <%= @listing.address%> <%=@listing.zip_code%></p>
-
-<% if @listing.exchanges.any? %>
-  <h3>Not Available:</h3>
-    <ul>
-      <% @listing.future_exchanges.each do |exchange|%>
-        <li><%=exchange.start_date_format%> - <%=exchange.end_date_format%></li>
-      <%end%>
-    </ul>
-<%end%>
-<% if @listing.deleted == false %>
-  <%= link_to "Rent this!", "/exchanges/#{@listing.id}/new"%>
-<%else%>
-  <p>This is item is no longer available to rent.</p>
-<%end%>
-<% if current_user%>
+<% if current_user %>  
+  <% if current_user.id == @listing.owner_id %>
+    <table>
+      <p>Exchanges: </p>
+          <% if @listing.exchanges.empty? %>
+              <p>This listing currently has no active exchanges.</p>
+          <% else %>
+              <% @listing.exchanges.each do |exchange| %>
+              <tr>
+              <td>
+                  <%=link_to "#{exchange.start_date_format} - #{exchange.end_date_format}",exchange_path(exchange) %>
+              </td>
+              <td>
+                  Rental Value:  <%=number_to_currency(exchange.total_price)%>
+              </td>
+              </tr>
+              <%end%>
+          <% end %>
+    </table>
+  <% end %>
+<% else %>
+  <% if @listing.exchanges.any? %>
+    <h3>Not Available:</h3>
+      <ul>
+        <% @listing.future_exchanges.each do |exchange|%>
+          <li><%=exchange.start_date_format%> - <%=exchange.end_date_format%></li>
+        <%end%>
+      </ul>
+  <%end%>
+<% end %>
+<% if current_user %>
   <% if current_user.id == @listing.owner_id%>
     <%=link_to "Edit Listing", edit_listing_path(@listing)%>
-  <%end%>
-<%end%>
+  <%else%>
+    <% if @listing.deleted == false %>
+      <%= link_to "Rent this!", "/exchanges/#{@listing.id}/new"%>
+    <%else%>
+      <p>This is item is no longer available to rent.</p>
+    <%end%>
+  <% end %>
+<% end %>
+
 
 
 

@@ -2,15 +2,28 @@
 
 <%= render partial:"/shared/error_partial", locals: {object: @user} %>
 
-<%= form_for @user do |f| %>
-  <%=f.label :name %>
-  <%=f.text_field :name%>
-
-  <%=f.label :password %>
-  <%=f.password_field :password%>
-
-  <%=f.label :password_confirmation %>
-  <%=f.password_field :password_confirmation%>
-
-  <%=f.submit "Update Profile"%>
-<%end%>
+<%= form_for @user do |f|%>
+  <div class="form-row">
+    <div class="form-group col-md-3">
+        <%=f.label :name %>
+        <%=f.text_field :name, class: "form-control"%>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-3">
+         <%=f.label :password %>
+        <%=f.password_field :password, class: "form-control"%>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-3">
+       <%=f.label :password_confirmation %>
+        <%=f.password_field :password_confirmation, class: "form-control"%>
+    </div>
+ </div>
+ <div class="form-row">
+    <div class="form-group">
+        <%=f.submit "Edit Profile"%>
+    </div>
+ </div>  
+<% end %>

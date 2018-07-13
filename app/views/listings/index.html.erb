@@ -1,7 +1,18 @@
-<h1>All Listings</h1>
 
-<% @existinglistings.each do |listing| %>
+<div class="container mt-4">
+  <section class="text-center">
+    <h1 class="">All Listings</h1>
+  </section>
+</div>
 
-<%=render partial: "listing_summary", locals: { listing: listing } %>
-
-<%end%>
+<div class="album py-1">
+  <div class="container">
+    <div class="row">
+      <% @existinglistings.each do |listing| %>
+        <div class="col-md-4">
+          <%=render partial: "listing_summary", locals: { listing: listing } %>
+        </div>
+      <%end%>
+    </div>
+  </div>
+</div>

@@ -1,1 +1,12 @@
-<p><%= link_to "#{listing.product_name} : Rent per day: #{number_to_currency(listing.rental_price)} Buy Price: #{number_to_currency(listing.buy_price)}", listing_path(listing)%></p>
+<%= link_to listing_path(listing) do %>
+<div class="card-body boxBG mb-3 mt-3">
+  <div class="card-text">
+    <p class="text-center small_hedding">
+      <%=listing.product_name%>
+    </p>
+    <p class="text-center"><%="Rent per day: #{number_to_currency(listing.rental_price)}"%></p>
+    <p class="text-center"><%="Buy Price: #{number_to_currency(listing.buy_price)}"%></p>
+</div>
+</div>
+
+<%end%>

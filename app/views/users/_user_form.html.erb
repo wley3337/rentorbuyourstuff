@@ -1,16 +1,36 @@
 
-<%= form_for user do |f| %>
-    <%=f.label :name %>
-    <%=f.text_field :name%>
+<%= form_for user do |f|%>
+  <div class="form-row">
+    <div class="form-group col-md-3">
+        <%=f.label :name %>
+        <%=f.text_field :name, class: "form-control"%>
+    </div>
+  </div>
+    <div class="form-row">
+    <div class="form-group col-md-3">
+        <%=f.label :username %>
+        <%=f.text_field :username, class: "form-control"%>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-3">
+         <%=f.label :password %>
+        <%=f.password_field :password, class: "form-control"%>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-3">
+       <%=f.label :password_confirmation %>
+        <%=f.password_field :password_confirmation, class: "form-control"%>
+    </div>
+ </div>
+ <div class="form-row">
+    <div class="form-group">
+        <%=f.submit "Create New User"%>
+    </div>
+ </div>  
+<% end %>
 
-    <%=f.label :username %>
-    <%=f.text_field :username%>
 
-    <%=f.label :password %>
-    <%=f.password_field :password%>
 
-    <%=f.label :password_confirmation %>
-    <%=f.password_field :password_confirmation%>
     
-    <%=f.submit "Create New User"%>
-<%end%>
