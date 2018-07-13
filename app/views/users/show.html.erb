@@ -1,6 +1,11 @@
-<h1><%= @user.username %></h1>
+<h1>Welcome <%= @user.name %>!</h1>
 
-<h3>Name: <%= @user.name %></h3>
+
+<h3>Username: <%= @user.username %></h3>
+
+<%= form_tag edit_user_path(@user), method: 'get' do %>
+    <%= submit_tag 'Edit Profile' %>
+<% end %>
 
 <h3>Listings</h3>
 
@@ -13,24 +18,11 @@
       <%else%>
         <ul>
             <% @user.active_listings.each do |listing| %>
-                <li><%=render partial: "/listings/listing_summary", locals: { listing: listing } %></li>
-                  <table>
-                    <p>Exchanges: </p>
-                        <% if  listing.exchanges.empty? %>
-                            <p>This listing currently has no active exchanges.</p>
-                        <% else %>
-                            <% listing.exchanges.each do |exchange| %>
-                            <tr>
-                            <td>
-                                <%=link_to "#{exchange.start_date_format} - #{exchange.end_date_format}",exchange_path(exchange) %>
-                            </td>
-                            <td>
-                                Rental Value:  <%=number_to_currency(exchange.total_price)%>
-                            </td>
-                            </tr>
-                            <%end%>
-                        <% end %>
-                  </table>
+                <li>
+                    <%=render partial: "/listings/listing_summary", locals: { listing: listing } %>
+                    <div>Number of Exchanges: <%= listing.future_exchanges.count %></div>
+                </li>
+                  
             <% end %>
         </ul>
       <%end%>
@@ -78,14 +70,7 @@
 <br>
 <br>
 
-<%= form_tag edit_user_path(@user), method: 'get' do %>
-    <%= submit_tag 'Edit Profile' %>
-<% end %>
 
-
-<%= form_tag new_listing_path, method: 'get' do %>
-    <%= submit_tag 'Create A New Listing' %>
-<% end %>
 
 
 
