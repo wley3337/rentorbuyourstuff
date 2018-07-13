@@ -1,19 +1,6 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Rentorbuyourstuff</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<h1>Create A Profile</h1>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= render partial:"/shared/error_partial", locals: {object: @user} %>
 
-  <body>
-    <h1>Create A Profile</h1>
-
-    <%= render partial:"/shared/error_partial", locals: {object: @user} %>
-
-    <%=render partial: "user_form", locals: {user: @user} %>
-  </body>
-</html>
+  <%=render partial: "user_form", locals: {user: @user} %>
+  

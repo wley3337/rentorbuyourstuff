@@ -1,13 +1,12 @@
 <h1>Welcome <%= @user.name %>!</h1>
 
 
-<h3>Username: <%= @user.username %></h3>
+<h4>Username: <%= @user.username %></h4>
+<br>
+<br>
 
-<%= form_tag edit_user_path(@user), method: 'get' do %>
-    <%= submit_tag 'Edit Profile' %>
-<% end %>
+<h2>Listings</h2>
 
-<h3>Listings</h3>
 
 <% if @user.listings.empty? %>
     <h4>You currently have 0 listings.</h4>
@@ -16,43 +15,40 @@
       <% if @user.active_listings.empty? %>
         <p>You have no active listings.</p>
       <%else%>
-        <ul>
+       <div class="album py-1">
+        <div class="container">
+        <div class="row">
             <% @user.active_listings.each do |listing| %>
-                <li>
+                <div class="card-body col-md-3">
                     <%=render partial: "/listings/listing_summary", locals: { listing: listing } %>
-                    <div>Number of Exchanges: <%= listing.future_exchanges.count %></div>
-                </li>
-                  
+                    <div class="text-center">
+                    <p>Upcoming exchanges: <%= listing.future_exchanges.count %></p>
+                    </div>
+                </div>  
             <% end %>
-        </ul>
+         </div> 
+         </div>
+         </div>
       <%end%>
     <h4>Deactived Listings:</h4>
       <% if @user.deactivated_listings.empty? %>
         <p>All your listings are currently active.</p>
       <%else%>
-        <ul>
+      <div class="album py-1">
+        <div class="container">
+        <div class="row">
             <% @user.deactivated_listings.each do |listing| %>
-                <li><%=render partial: "/listings/listing_summary", locals: { listing: listing } %></li>
-                  <table>
-                    <p>Exchanges: </p>
-                        <% if  listing.exchanges.empty? %>
-                            <p>This listing currently has no active exchanges.</p>
-                        <% else %>
-                            <% listing.exchanges.each do |exchange| %>
-                            <tr>
-                            <td>
-                                <%=link_to "#{exchange.start_date_format} - #{exchange.end_date_format}",exchange_path(exchange) %>
-                            </td>
-                            <td>
-                                Rental Value:  <%=number_to_currency(exchange.total_price)%>
-                            </td>
-                            </tr>
-                            <%end%>
-                        <% end %>
-                  </table>
+                <div class="card-body col-md-3">
+                    <%=render partial: "/listings/listing_summary", locals: { listing: listing } %>
+                    <div class="text-center">
+                    <p>Remaining exchanges: <%= listing.future_exchanges.count %></p>
+                    </div>
+                </div>  
             <% end %>
-        </ul>
-      <%end%>
+         </div> 
+         </div>
+         </div>
+         <% end %>
 <% end %>
 
 <h3>Rentals</h3>
