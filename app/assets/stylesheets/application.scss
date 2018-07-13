@@ -13,3 +13,20 @@
  *= require_tree .
  *= require_self
  */
+ // Custom bootstrap variables must be set or imported *before* bootstrap.
+ @import "bootstrap";
+
+// ------font styling
+
+
+// google fonts
+// font-family: 'PT Sans', sans-serif;
+// font-family: 'Nanum Gothic', sans-serif;
+// font-family: 'Questrial', sans-serif;
+*{
+  font-family: 'Questrial', sans-serif;
+}
+h1 {
+  font-family: 'PT Sans', sans-serif;
+  color: #473198;
+}
