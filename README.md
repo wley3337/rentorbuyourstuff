@@ -1,6 +1,8 @@
 # README
 Created by: <a href="">Essa</a>, <a href="https://github.com/awchang12">Anthony</a>, Will
 
+Deplyed version can be found [here](https://stark-falls-90133.herokuapp.com/) -please allow Heroku to spin up
+
 Premise: This is a mock-up of a rental exchange site. Users can create an account,
  list items, rent each other's items but not their own, and view items for rent.
 
